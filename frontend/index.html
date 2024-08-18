@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lava</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-top">
+            <p class="button-hdr" id="newtab-btn">+</p>
+            <div class="tab-container" id="tab-container">
+            </div>
+            <div class="status">
+                <img class="status-icon" src="imgs/logo.png">
+                <p class="status-text" id="status-text">Lava</p>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="page-buttons-container">
+                <p class="button-hdr" id="go-back">&lt;</p>
+                <p class="button-hdr" id="go-forward">&gt;</p>
+                <p class="button-hdr" id="refresh">⟳</p>
+            </div>
+            <div class="bar">
+                <input type="text" class="urlbar" id="url-input" placeholder="Enter a URL or search...">
+                <p class="button-hdr" id="menu">☰</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/rendererMain.js" type="module"></script>
+</body>
+</html>

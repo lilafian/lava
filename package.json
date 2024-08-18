@@ -1,0 +1,26 @@
+{
+  "name": "lava",
+  "version": "1.0.0",
+  "description": "Web browser",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StrawberryMilkSoftware/lava.git"
+  },
+  "keywords": [
+    "web",
+    "browser"
+  ],
+  "author": "Strawberry Milk Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StrawberryMilkSoftware/lava/issues"
+  },
+  "homepage": "https://github.com/StrawberryMilkSoftware/lava#readme",
+  "devDependencies": {
+    "electron": "^31.4.0"
+  }
+}
