@@ -1,5 +1,5 @@
 import { generateID } from "./math.js";
-import { listenForStatus } from "./status.js"
+import { startMonitors } from "./wvMonitoring.js";
 
 export const tabContainer = document.getElementById('tab-container');
 
@@ -24,7 +24,7 @@ tabContainer.addEventListener('wheel', (e) => {
     }
 }, { passive: false });
 
-export function createTab() {
+export function createTab(url) {
     if (document.querySelector(".tab-current")) {
         document.querySelector(".tab-current").classList.remove("tab-current");
     }
@@ -59,7 +59,8 @@ export function createTab() {
     let newWebview = document.createElement("webview");
     newWebview.classList.add("webcontent");
     newWebview.id = `${tabID}-web`;
-    newWebview.src = "https://www.google.com/";
+    newWebview.src = url;
+    newWebview.setAttribute('allowpopups', '');
     newWebview.addEventListener("did-finish-load", () => {
         let currentTab = document.querySelector(".tab-current");
         document.title = newWebview.getTitle() + " - Lava";
@@ -69,7 +70,6 @@ export function createTab() {
         let urlBar = document.querySelector("#url-input");
         urlBar.value = newWebview.src;
     });
-    listenForStatus(newWebview);
 
     newTab.querySelector(".button-tab-close").addEventListener('click', (event) => {
         event.stopPropagation();
@@ -86,6 +86,9 @@ export function createTab() {
     tabContainer.appendChild(newTab);
     document.body.appendChild(newWebview);
     console.log("Tab created with ID " + tabID);
+    newWebview.addEventListener("dom-ready", () => {
+        startMonitors(newWebview);
+    });
 }
 
 export function setCurrentTab(tab) {
@@ -110,4 +113,6 @@ export function setCurrentTab(tab) {
 
     tabWV.classList.add("webcontent");
     tabWV.classList.remove("wv-inactive");
+    let urlBar = document.querySelector("#url-input");
+    urlBar.value = tabWV.src;
 }

@@ -24,5 +24,7 @@ export function setupPageInteractionButtons() {
 export let TI_new = document.getElementById("newtab-btn");
 
 export function setupTabInteractionButtons() {
-    TI_new.addEventListener("click", createTab);
+    TI_new.addEventListener("click", () => {
+        createTab("https://www.google.com");
+    });
 }

@@ -12,7 +12,10 @@ const createWindow = () => {
         height: 600,
         webPreferences: {
             webviewTag: true,
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, 'preload.js'),
+            allowPopups: true,
+            contextIsolation: true,
+            nodeIntegration: false
         }
     });
 
@@ -32,9 +35,25 @@ const createWindow = () => {
 
     win.webContents.on("did-attach-webview", (event, webContents) => {
         console.log("-----> Webview attached! User-Agent: " + webContents.userAgent);
+        
+        webContents.setWindowOpenHandler(({ url }) => {
+            console.log("-----> Intercepted URL:", url);
+            win.webContents.send('intercepted-url', url);
+            return { action: 'deny' };
+        });
     })
 
-    // win.removeMenu();
+    win.on('enter-full-screen', () => {
+        console.log("-----> Entering fullscreen");
+        win.webContents.send('fullscreen-change', true);
+    });
+
+    win.on('leave-full-screen', () => {
+        console.log("-----> Leaving fullscreen");
+        win.webContents.send('fullscreen-change', false);
+    });
+
+    win.removeMenu();
 }
 
 app.whenReady().then(() => {

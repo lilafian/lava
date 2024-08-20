@@ -141,6 +141,7 @@ body {
     align-items: center;
     padding: 5px;
     flex-shrink: 0;
+    justify-content: center;
 }
 
 .status-text {
@@ -191,4 +192,8 @@ body {
     opacity: 0;
     width: 0;
     height: 0;
+}
+
+.hidden {
+    display: none;
 }

@@ -1,7 +1,9 @@
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
     setTitle: (title) => ipcRenderer.send('setTitle', title),
     quit: () => ipcRenderer.send('quit'),
-    getVersion: () => ipcRenderer.invoke('getVersion')
-})
+    getVersion: () => ipcRenderer.invoke('getVersion'),
+    onInterceptedUrl: (callback) => ipcRenderer.on('intercepted-url', callback),
+    onFullscreenChange: (callback) => ipcRenderer.on('fullscreen-change', callback)
+});
