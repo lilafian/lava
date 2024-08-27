@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lava</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="header">
         <div class="header-top">
-            <p class="button-hdr" id="newtab-btn">+</p>
+            <i class="fa-solid fa-plus button-hdr" id="newtab-btn"></i>
             <div class="tab-container" id="tab-container">
             </div>
             <div class="status">
@@ -19,13 +20,13 @@
         </div>
         <div class="header-bottom">
             <div class="page-buttons-container">
-                <p class="button-hdr" id="go-back">&lt;</p>
-                <p class="button-hdr" id="go-forward">&gt;</p>
-                <p class="button-hdr" id="refresh">⟳</p>
+                <i class="fa-solid fa-arrow-left button-hdr" id="go-back"></i>
+                <i class="fa-solid fa-arrow-right button-hdr" id="go-forward"></i>
+                <i class="fa-solid fa-rotate-right button-hdr" id="refresh"></i>
             </div>
             <div class="bar">
                 <input type="text" class="urlbar" id="url-input" placeholder="Enter a URL or search...">
-                <p class="button-hdr" id="menu">☰</p>
+                <i class="fa-solid fa-bars button-hdr" id="menu"></i>
             </div>
         </div>
     </div>

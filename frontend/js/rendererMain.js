@@ -1,6 +1,7 @@
 import { setVersionStatus } from "./status.js";
 import { setupPageInteractionButtons, setupTabInteractionButtons } from "./buttons.js";
 import { createTab } from "./tabs.js"
+import { loadAllClientExtensions } from "./extensions.js";
 
 setVersionStatus();
 setupPageInteractionButtons();
@@ -68,3 +69,4 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
+loadAllClientExtensions();

@@ -47,7 +47,7 @@ export function createTab(url) {
                         <img class="tab-icon" src="imgs/logo.ico">
                         <p class="tab-title">New Tab</p>
                     </div>
-                    <p class="button-tab-close">x</p>
+                    <i class="fa-solid fa-xmark button-tab-close button-hdr"></i>
     `;
     newTab.setAttribute("data-tab-id", tabID);
 

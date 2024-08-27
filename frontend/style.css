@@ -30,16 +30,19 @@ body {
 }
 
 .button-hdr {
-    font-size: 17px;
+    font-size: 12px;
     margin: 5px;
     cursor: pointer;
     transition: 0.1s;
     color: white;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .button-hdr:hover, .button-tab-close:hover {
-    transform: scale(1.21, 1.21);
+    transform: scale(1.1, 1.1);
 }
 
 .tab-container {
@@ -118,10 +121,6 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     margin-right: 10px;
-}
-
-.button-tab-close {
-    cursor: pointer;
 }
 
 .tab-icon, .status-icon {

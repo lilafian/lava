@@ -1,0 +1,9 @@
+{
+    "name": "Button Template",
+    "id": "button-template",
+    "description": "Adds a button to the bottom section of the header.",
+    "author": "Lilaf",
+    "version": "1.0.0",
+    "extApiVersion": "1",
+    "type": "client"
+}
