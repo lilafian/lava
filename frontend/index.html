@@ -6,9 +6,12 @@
     <title>Lava</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
+    <div class="header"
+        data-aos="fade-down"
+        data-aos-duration="1500">
         <div class="header-top">
             <i class="fa-solid fa-plus button-hdr" id="newtab-btn"></i>
             <div class="tab-container" id="tab-container">
@@ -26,11 +29,18 @@
             </div>
             <div class="bar">
                 <input type="text" class="urlbar" id="url-input" placeholder="Enter a URL or search...">
-                <i class="fa-solid fa-bars button-hdr" id="menu"></i>
+                <i class="fa-solid fa-star button-hdr" id="bookmarks"></i>
+                <i class="fa-solid fa-gear button-hdr" id="menu"></i>
+                <i class="fa-solid fa-circle-info button-hdr" id="info"></i>
             </div>
         </div>
     </div>
 
     <script src="js/rendererMain.js" type="module"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

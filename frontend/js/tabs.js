@@ -61,6 +61,8 @@ export function createTab(url) {
     newWebview.id = `${tabID}-web`;
     newWebview.src = url;
     newWebview.setAttribute('allowpopups', '');
+    newWebview.setAttribute('data-aos', 'fade-up');
+    newWebview.setAttribute('data-aos-duration', '1500');
     newWebview.addEventListener("did-finish-load", () => {
         let currentTab = document.querySelector(".tab-current");
         document.title = newWebview.getTitle() + " - Lava";
@@ -70,6 +72,7 @@ export function createTab(url) {
         let urlBar = document.querySelector("#url-input");
         urlBar.value = newWebview.src;
     });
+    
 
     newTab.querySelector(".button-tab-close").addEventListener('click', (event) => {
         event.stopPropagation();
@@ -113,6 +116,9 @@ export function setCurrentTab(tab) {
 
     tabWV.classList.add("webcontent");
     tabWV.classList.remove("wv-inactive");
+    tabWV.removeAttribute("data-aos");
+    tabWV.removeAttribute("data-aos-duration");
+    document.title = tabWV.getTitle() + " - Lava";
     let urlBar = document.querySelector("#url-input");
     urlBar.value = tabWV.src;
 }

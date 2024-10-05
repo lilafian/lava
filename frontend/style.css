@@ -185,6 +185,7 @@ body {
 .webcontent {
     height: calc(100vh - 6vh);
     width: 100%;
+    background-color: white;
 }
 
 .wv-inactive {
@@ -195,4 +196,74 @@ body {
 
 .hidden {
     display: none;
+}
+
+.sidebar {
+    width: 20%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background-color: #151515;
+    display: flex;
+    z-index: 10;
+    transition: transform 725ms ease;
+    transform: translateX(-100%);
+    color: white;
+    padding: 1%;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.sidebar h1 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.bookmark-icon {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+}
+
+.bookmark-title {
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.bookmark {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.code {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sidebar-center-text-bold {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px;
+}
+
+.sidebar-logo-img {
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 0;
+}
+
+.sidebar-logo-img-small {
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: 0;
 }

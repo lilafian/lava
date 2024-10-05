@@ -2,6 +2,9 @@ import { setVersionStatus } from "./status.js";
 import { setupPageInteractionButtons, setupTabInteractionButtons } from "./buttons.js";
 import { createTab } from "./tabs.js"
 import { loadAllClientExtensions } from "./extensions.js";
+import { initBookmarks, openBookmarksSidebar } from "./bookmarks.js";
+import { initSettingsSidebar, openSettingsSidebar } from "./settings.js";
+import { initInfoSidebar, openInfoSidebar } from "./infoSidebar.js";
 
 setVersionStatus();
 setupPageInteractionButtons();
@@ -66,7 +69,21 @@ document.addEventListener("keydown", (e) => {
             });
             header.classList.remove('header-hidden');
         }
+    } else if (e.ctrlKey && e.shiftKey && e.code === "KeyB") {
+        e.preventDefault();
+        openBookmarksSidebar();
+    } else if (e.ctrlKey && e.shiftKey && e.code === "KeyI") {
+        e.preventDefault();
+        openInfoSidebar();
+    } else if (e.ctrlKey && e.code === "KeyP") {
+        e.preventDefault();
+        openSettingsSidebar();
     }
 });
 
 loadAllClientExtensions();
+
+// Sidebar event listeners and setup
+initBookmarks();
+initSettingsSidebar();
+initInfoSidebar();

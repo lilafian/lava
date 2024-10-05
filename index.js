@@ -32,9 +32,20 @@ const createWindow = () => {
         app.quit();
     });
 
-    // IPC handler for getting extensions
     ipcMain.handle('get-extensions', async (event, debug) => {
-        return await getExtensions(debug); // Call your function and return the result
+        return await getExtensions(debug);
+    });
+
+    ipcMain.handle('get-bookmarks', async (event, debug) => {
+        return await getBookmarks(debug);
+    });
+
+    ipcMain.handle('add-bookmark', async (event, title, url, debug) => {
+        await addBookmark(title, url, debug);
+    });
+
+    ipcMain.handle('get-settings', async (event, debug) => {
+        return await getSettings(debug);
     });
 
     win.loadFile(path.join(__dirname, 'frontend/index.html'));
@@ -107,7 +118,7 @@ async function getExtensions(debug = false) {
                             metadata.exec = entryContent;
                         } catch (entryError) {
                             console.error(`Error reading entry.js for ${metadata.id}:`, entryError.message);
-                            metadata.exec = null; // or you could set it to an empty string if you prefer
+                            metadata.exec = null;
                         }
   
                         target[metadata.id] = metadata;
@@ -126,6 +137,72 @@ async function getExtensions(debug = false) {
     return result;
 }
 
+async function getBookmarks(debug = false) {
+    let basePath;
+    if (debug) {
+        basePath = path.join(os.homedir(), 'projects', 'lava');
+    } else {
+        const paths = envPaths('lava');
+        basePath = paths.config;
+    }
+
+    let dataPath = path.join(basePath, 'data');
+    
+
+    try {
+        const bookmarksJson = await fs.readFile(path.join(dataPath, "bookmarks.json"), 'utf-8');
+        return JSON.parse(bookmarksJson);
+    } catch (err) {
+        console.error(`Error reading bookmarks`, err.message);
+        return {};
+    }
+}
+
+async function addBookmark(title, url, debug = false) {
+    let basePath;
+    if (debug) {
+        basePath = path.join(os.homedir(), 'projects', 'lava');
+    } else {
+        const paths = envPaths('lava');
+        basePath = paths.config;
+    }
+
+    let dataPath = path.join(basePath, 'data');
+    
+
+    try {
+        const bookmarksJson = await fs.readFile(path.join(dataPath, "bookmarks.json"), 'utf-8');
+        let bookmarks = JSON.parse(bookmarksJson);
+        let newBookmark = {title: title, url: url};
+        bookmarks.bookmarks.push(newBookmark);
+        await fs.writeFile(path.join(dataPath, "bookmarks.json"), JSON.stringify(bookmarks, null, 2));
+        console.log(`Created bookmark ${title} with url ${url} successfully`);
+    } catch (err) {
+        console.error(`Error adding bookmark ${title}: `, err.message);
+    }
+}
+
+async function getSettings(debug = false) {
+    let basePath;
+    if (debug) {
+        basePath = path.join(os.homedir(), 'projects', 'lava');
+    } else {
+        const paths = envPaths('lava');
+        basePath = paths.config;
+    }
+
+    let dataPath = path.join(basePath, 'data');
+    
+
+    try {
+        const settingsJson = await fs.readFile(path.join(dataPath, "settings.json"), 'utf-8');
+        return JSON.parse(settingsJson);
+    } catch (err) {
+        console.error(`Error reading settings`, err.message);
+        return {};
+    }
+}
+
 app.whenReady().then(() => {
     console.log("-----> App ready!");
     
@@ -140,9 +217,17 @@ app.whenReady().then(() => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
 
-    getExtensions()
-        .then(extensions => console.log(JSON.stringify(extensions, null, 2)))
-        .catch(error => console.error('Error:', error));
+    getExtensions(true)
+        .then(extensions => console.log("-----> Extensions:", JSON.stringify(extensions, null, 2)))
+        .catch(error => console.error('EXTENSIONS Error:', error));
+
+    getBookmarks(true)
+        .then(bookmarks => console.log("-----> Bookmarks:", JSON.stringify(bookmarks, null, 2)))
+        .catch(error => console.error('BOOKMARKS Error:', error));
+
+    getSettings(true)
+        .then(bookmarks => console.log("-----> Settings:", JSON.stringify(bookmarks, null, 2)))
+        .catch(error => console.error('SETTINGS Error:', error));
 });
 
 console.log("-----> Waiting for app to be ready...");
