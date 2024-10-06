@@ -1,6 +1,6 @@
 import { setVersionStatus } from "./status.js";
 import { setupPageInteractionButtons, setupTabInteractionButtons } from "./buttons.js";
-import { createTab } from "./tabs.js"
+import { createTab, getCurrentWebview } from "./tabs.js"
 import { loadAllClientExtensions } from "./extensions.js";
 import { initBookmarks, openBookmarksSidebar } from "./bookmarks.js";
 import { initSettingsSidebar, openSettingsSidebar } from "./settings.js";
@@ -72,12 +72,26 @@ document.addEventListener("keydown", (e) => {
     } else if (e.ctrlKey && e.shiftKey && e.code === "KeyB") {
         e.preventDefault();
         openBookmarksSidebar();
-    } else if (e.ctrlKey && e.shiftKey && e.code === "KeyI") {
+    } else if (e.ctrlKey && e.altKey && e.code === "KeyI" && !e.shiftKey) {
         e.preventDefault();
         openInfoSidebar();
     } else if (e.ctrlKey && e.code === "KeyP") {
         e.preventDefault();
         openSettingsSidebar();
+    } else if (e.code === "F5") {
+        e.preventDefault();
+        getCurrentWebview().reload();
+    } else if (e.ctrlKey && e.shiftKey && e.code === "KeyI" && !e.altKey) {
+        e.preventDefault();
+        let wv = getCurrentWebview();
+        if (wv.isDevToolsOpened()) {
+            wv.closeDevTools();
+        } else {
+            wv.openDevTools();
+        }
+    } else if (e.ctrlKey && e.shiftKey && e.altKey && e.code === "KeyI") {
+        e.preventDefault();
+        window.electronAPI.toggleBrowserDevTools();
     }
 });
 

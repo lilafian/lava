@@ -94,6 +94,10 @@ export function createTab(url) {
     });
 }
 
+export function getCurrentWebview() {
+    return document.querySelector(".webcontent");
+}
+
 export function setCurrentTab(tab) {
     if (!tab) return;
     let currentTab = document.querySelector(".tab-current");

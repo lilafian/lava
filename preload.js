@@ -8,6 +8,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     getBookmarks: (debug) => ipcRenderer.invoke('get-bookmarks', debug),
     addBookmark: (debug) => ipcRenderer.invoke('add-bookmark', title, url, debug),
     getSettings: (debug) => ipcRenderer.invoke('get-settings', debug),
+    toggleBrowserDevTools: (debug) => ipcRenderer.invoke('toggle-dev-tools', debug),
     onInterceptedUrl: (callback) => ipcRenderer.on('intercepted-url', callback),
     onFullscreenChange: (callback) => ipcRenderer.on('fullscreen-change', callback)
 });

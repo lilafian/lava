@@ -48,6 +48,20 @@ const createWindow = () => {
         return await getSettings(debug);
     });
 
+    ipcMain.handle('toggle-dev-tools', async (event) => {
+        console.log("DEV TOOLS OPENED !!!!!!!!!!!!!!!!!!!!!!!!! (toggled actually)")
+
+        const webContents = event.sender;
+        if (webContents.isDevToolsOpened) { // backwards idk why.  i hate electron why did i build this in electron kjklj;khjkljlk
+            console.log("dev tools are closed, opening");
+            webContents.openDevTools();
+        } else {
+            console.log("dev tools are open, closing");
+
+            webContents.closeDevTools();
+        }
+    });
+
     win.loadFile(path.join(__dirname, 'frontend/index.html'));
 
     console.log("-----> Window created successfully!");
@@ -72,7 +86,7 @@ const createWindow = () => {
         win.webContents.send('fullscreen-change', false);
     });
 
-    // win.removeMenu();
+    win.removeMenu();
 }
 
 async function getExtensions(debug = false) {
