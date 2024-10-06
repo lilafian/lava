@@ -113,8 +113,7 @@ async function getExtensions(debug = false) {
     await fs.mkdir(webPath, { recursive: true });
   
     const result = {
-        client: {},
-        web: {}
+        client: {}
     };
   
     async function processSubfolders(basePath, target) {
