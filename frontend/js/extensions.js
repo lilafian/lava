@@ -1,5 +1,5 @@
 export async function getExtensions() {
-    const extensions = await window.electronAPI.getExtensions(false);
+    const extensions = await window.electronAPI.getExtensions(true);
     return extensions;
 }
 

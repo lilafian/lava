@@ -62,6 +62,11 @@ const createWindow = () => {
         }
     });
 
+    ipcMain.handle('reload', async (event) => {
+        const webContents = event.sender;
+        webContents.reload();
+    });
+
     win.loadFile(path.join(__dirname, 'frontend/index.html'));
 
     console.log("-----> Window created successfully!");

@@ -92,6 +92,9 @@ document.addEventListener("keydown", (e) => {
     } else if (e.ctrlKey && e.shiftKey && e.altKey && e.code === "KeyI") {
         e.preventDefault();
         window.electronAPI.toggleBrowserDevTools();
+    } else if (e.ctrlKey && e.code === "KeyR") {
+        e.preventDefault();
+        window.electronAPI.reloadBrowser();
     }
 });
 
