@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
   getSettings: (debug) => ipcRenderer.invoke("get-settings", debug),
   setSetting: (setting, value, debug) =>
     ipcRenderer.invoke("set-setting", setting, value, debug),
+  clearData: () => ipcRenderer.invoke("clear-data"),
   toggleBrowserDevTools: (debug) =>
     ipcRenderer.invoke("toggle-dev-tools", debug),
   reloadBrowser: (debug) => ipcRenderer.invoke("reload", debug),

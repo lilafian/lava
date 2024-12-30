@@ -298,3 +298,27 @@ body {
     width: auto;
     align-items: center;
 }
+
+.settings-checkbox {
+    margin-left: 20px;
+}
+
+.settings-note {
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.label-with-note {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-button {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #252525;
+    border-radius: 2.5px;
+    font-size = "75%";
+    color: white;
+    margin-left: 20px;
+}

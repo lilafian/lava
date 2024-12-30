@@ -1,6 +1,6 @@
 console.log("-----> Starting Lava...");
 
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, session } = require("electron");
 const path = require("path");
 const fs = require("fs").promises;
 const envPaths = require("env-paths");
@@ -50,6 +50,10 @@ const createWindow = () => {
 
   ipcMain.handle("set-setting", async (event, setting, value, debug) => {
     return await setSetting(setting, value, debug);
+  });
+
+  ipcMain.handle("clear-data", async (event) => {
+    return await clearData();
   });
 
   ipcMain.handle("toggle-dev-tools", async (event) => {
@@ -273,6 +277,11 @@ async function setSetting(setting, value, debug = false) {
   }
 }
 
+async function clearData() {
+  await session.defaultSession.clearStorageData();
+  await session.defaultSession.clearCache();
+}
+
 app.whenReady().then(() => {
   console.log("-----> App ready!");
 
@@ -287,18 +296,6 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 
-  getExtensions(true)
-    .then((extensions) =>
-      console.log("-----> Extensions:", JSON.stringify(extensions, null, 2)),
-    )
-    .catch((error) => console.error("EXTENSIONS Error:", error));
-
-  getBookmarks(true)
-    .then((bookmarks) =>
-      console.log("-----> Bookmarks:", JSON.stringify(bookmarks, null, 2)),
-    )
-    .catch((error) => console.error("BOOKMARKS Error:", error));
-
   getSettings(true)
     .then((bookmarks) =>
       console.log("-----> Settings:", JSON.stringify(bookmarks, null, 2)),
@@ -308,6 +305,14 @@ app.whenReady().then(() => {
 
 console.log("-----> Waiting for app to be ready...");
 
-app.on("window-all-closed", function () {
+app.on("window-all-closed", async function () {
+  const settings = await getSettings(true);
+  if (settings.clearDataOnExit) {
+    try {
+      await clearData();
+    } catch (error) {
+      console.error("Error clearing storage data:", error);
+    }
+  }
   if (process.platform !== "darwin") app.quit();
 });
