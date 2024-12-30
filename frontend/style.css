@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 * {
     user-select: none;
@@ -20,10 +20,11 @@ body {
     padding: 0;
 }
 
-.header-top, .header-bottom {
+.header-top,
+.header-bottom {
     width: 100vw;
     height: 50%;
-    border-bottom: 1px  solid #252525;
+    border-bottom: 1px solid #252525;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -41,7 +42,8 @@ body {
     justify-content: center;
 }
 
-.button-hdr:hover, .button-tab-close:hover {
+.button-hdr:hover,
+.button-tab-close:hover {
     transform: scale(1.1, 1.1);
 }
 
@@ -110,7 +112,8 @@ body {
     overflow: hidden;
 }
 
-.tab-title, .button-tab-close {
+.tab-title,
+.button-tab-close {
     font-size: 75%;
     margin: 0;
     color: white;
@@ -123,7 +126,8 @@ body {
     margin-right: 10px;
 }
 
-.tab-icon, .status-icon {
+.tab-icon,
+.status-icon {
     height: 90%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
@@ -180,7 +184,6 @@ body {
 .urlbar:focus {
     background-color: rgba(255, 255, 255, 0.1);
 }
-
 
 .webcontent {
     height: calc(100vh - 6vh);
@@ -241,9 +244,26 @@ body {
 }
 
 .code {
-    font-family: 'Courier New', monospace;
+    font-family: "Courier New", monospace;
     font-size: 16px;
     cursor: pointer;
+}
+
+.warning {
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    cursor: pointer;
+    color: yellow;
+    max-width: 150px;
+    margin-left: 10px;
+}
+
+.sidenote {
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    cursor: pointer;
+    max-width: 150px;
+    margin-left: 10px;
 }
 
 .sidebar-center-text-bold {
@@ -266,4 +286,15 @@ body {
     margin-right: auto;
     margin-bottom: 0;
     margin-top: 0;
+}
+
+.dropdown-option {
+    color: black;
+}
+
+.label-with-warning {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    align-items: center;
 }
