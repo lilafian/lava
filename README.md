@@ -1,6 +1,7 @@
 <img height="100" src="https://github.com/rhhen122/lava-readme/blob/master/frontend/imgs/logo.png">
 
-## Lava... A Clean [JS] Based Web-Browser...
+# Lava
+## A Clean [JS] Based Web-Browser...
 <img height="500" src="https://github.com/rhhen122/lava-readme/blob/master/frontend/imgs/showcase.png">
 Run With The following ::
 
