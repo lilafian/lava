@@ -1,19 +1,14 @@
-<img height="100" src="https://github.com/rhhen122/lava-readme/blob/master/frontend/imgs/logo.png">
+<p align="center"><img height="100" src="https://github.com/lilafian/lava/blob/master/frontend/imgs/logo-type.png"></p>
 
-# Lava
-## A Clean [JS] Based Web-Browser...
-<img height="500" src="https://github.com/rhhen122/lava-readme/blob/master/frontend/imgs/showcase.png">
-Run With The following ::
+<h1 align="center">a simple browser for simple people</h1>
+<p align="center"><img height="500" src="https://github.com/rhhen122/lava-readme/blob/master/frontend/imgs/showcase.png"></p>
 
-###
 > [!NOTE]
-> To make this work (For Some reason) the project folder needs to be in your `$HOME` dir inside a folder titled `"Projects"`
-```
-$ npm start index.js
-```
+> Lava is not currently intended for use in professional environments. While it is suitable for personal use, it is in a beta stage and is very unstable. Please open an issue if you experience any problems.
+## Contributors:
 
-## Contributers:
-<body>
-<img height="100" src="https://avatars.githubusercontent.com/u/102885633?v=4">
-<img height="100" src="https://avatars.githubusercontent.com/u/195695145?v=4">
-</body>
+<a href="https://github.com/lilafian/lava/graphs/contributors">
+    <img src="https://contri.buzz/api/wall?repo=lilafian/lava" alt="Contributors' Wall for lilafian/lava" />
+</a>
+
+> THE WALL MIGHT BE WRONG BECAUSE IT NEEDS TO GENERATE!
