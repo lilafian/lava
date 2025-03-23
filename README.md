@@ -5,10 +5,17 @@
 
 > [!NOTE]
 > Lava is not currently intended for use in professional environments. While it is suitable for personal use, it is in a beta stage and is very unstable. Please open an issue if you experience any problems.
-## Contributors:
+## Contributors
+[emoji key](https://allcontributors.org/docs/en/emoji-key)
 
-<a href="https://github.com/lilafian/lava/graphs/contributors">
-    <img src="https://contri.buzz/api/wall?repo=lilafian/lava" alt="Contributors' Wall for lilafian/lava" />
-</a>
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/lilafian"><img src="https://avatars.githubusercontent.com/u/102885633?v=4" width="100px;" alt=""/><br /><sub><b>lilaf</b></sub></a><br /><a href="https://github.com/lilafian/lava/commits?author=lilafian" title="Contributions">💻🚇👀🤔</a></td>
+    <td align="center"><a href="https://github.com/rhhen122"><img src="https://avatars.githubusercontent.com/u/195695145?v=4" width="100px;" alt=""/><br /><sub><b>RHHEN122</b></sub></a><br /><a href="https://github.com/lilafian/lava/commits?author=rhhen122" title="Contributions">📖</a></td>
+  </tr>
+</table>
 
-> THE WALL MIGHT BE WRONG BECAUSE IT NEEDS TO GENERATE!
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
