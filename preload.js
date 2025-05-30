@@ -4,16 +4,16 @@ contextBridge.exposeInMainWorld("electronAPI", {
   setTitle: (title) => ipcRenderer.send("setTitle", title),
   quit: () => ipcRenderer.send("quit"),
   getVersion: () => ipcRenderer.invoke("getVersion"),
-  getExtensions: (debug) => ipcRenderer.invoke("get-extensions", debug),
-  getBookmarks: (debug) => ipcRenderer.invoke("get-bookmarks", debug),
-  addBookmark: (debug) => ipcRenderer.invoke("add-bookmark", title, url, debug),
-  getSettings: (debug) => ipcRenderer.invoke("get-settings", debug),
-  setSetting: (setting, value, debug) =>
-    ipcRenderer.invoke("set-setting", setting, value, debug),
+  getExtensions: () => ipcRenderer.invoke("get-extensions"),
+  getBookmarks: () => ipcRenderer.invoke("get-bookmarks"),
+  addBookmark: () => ipcRenderer.invoke("add-bookmark", title, url),
+  getSettings: () => ipcRenderer.invoke("get-settings"),
+  setSetting: (setting, value) =>
+    ipcRenderer.invoke("set-setting", setting, value),
   clearData: () => ipcRenderer.invoke("clear-data"),
-  toggleBrowserDevTools: (debug) =>
-    ipcRenderer.invoke("toggle-dev-tools", debug),
-  reloadBrowser: (debug) => ipcRenderer.invoke("reload", debug),
+  toggleBrowserDevTools: () =>
+    ipcRenderer.invoke("toggle-dev-tools"),
+  reloadBrowser: () => ipcRenderer.invoke("reload"),
   onInterceptedUrl: (callback) => ipcRenderer.on("intercepted-url", callback),
   onFullscreenChange: (callback) =>
     ipcRenderer.on("fullscreen-change", callback),

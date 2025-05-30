@@ -1,7 +1,10 @@
 <p align="center"><img height="100" src="https://github.com/lilafian/lava/blob/master/frontend/imgs/logo-type.png"></p>
 
 <h1 align="center">a simple browser for simple people</h1>
-<p align="center"><img height="500" src="https://github.com/rhhen122/lava-readme/blob/master/frontend/imgs/showcase.png"></p>
+<p align="center"><img height="500" src="https://github.com/lilafian/lava/blob/master/frontend/imgs/showcase.png"></p>
+
+> [!NOTE]
+> This is honestly a mess of a project as of writing this and is being archived. To run, run `npm start` after installing electron and put the "data" and "extensions" directories inside of `.config/lava-nodejs`. I have no idea where the path is on Windows. 
 
 > [!NOTE]
 > Lava is not currently intended for use in professional environments. While it is suitable for personal use, it is in a beta stage and is very unstable. Please open an issue if you experience any problems.

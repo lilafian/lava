@@ -32,24 +32,24 @@ const createWindow = () => {
     app.quit();
   });
 
-  ipcMain.handle("get-extensions", async (event, debug) => {
-    return await getExtensions(debug);
+  ipcMain.handle("get-extensions", async (event) => {
+    return await getExtensions();
   });
 
-  ipcMain.handle("get-bookmarks", async (event, debug) => {
-    return await getBookmarks(debug);
+  ipcMain.handle("get-bookmarks", async (event) => {
+    return await getBookmarks();
   });
 
-  ipcMain.handle("add-bookmark", async (event, title, url, debug) => {
-    await addBookmark(title, url, debug);
+  ipcMain.handle("add-bookmark", async (event, title, url) => {
+    await addBookmark(title, url);
   });
 
-  ipcMain.handle("get-settings", async (event, debug) => {
-    return await getSettings(debug);
+  ipcMain.handle("get-settings", async (event) => {
+    return await getSettings();
   });
 
-  ipcMain.handle("set-setting", async (event, setting, value, debug) => {
-    return await setSetting(setting, value, debug);
+  ipcMain.handle("set-setting", async (event, setting, value) => {
+    return await setSetting(setting, value);
   });
 
   ipcMain.handle("clear-data", async (event) => {
@@ -58,7 +58,7 @@ const createWindow = () => {
 
   ipcMain.handle("toggle-dev-tools", async (event) => {
     console.log(
-      "DEV TOOLS OPENED !!!!!!!!!!!!!!!!!!!!!!!!! (toggled actually)",
+      "dev tools opened",
     );
 
     const webContents = event.sender;
@@ -108,14 +108,9 @@ const createWindow = () => {
   win.removeMenu();
 };
 
-async function getExtensions(debug = false) {
-  let basePath;
-  if (debug) {
-    basePath = path.join(os.homedir(), "Projects", "lava");
-  } else {
-    const paths = envPaths("lava");
-    basePath = paths.config;
-  }
+async function getExtensions() {
+  const paths = envPaths("lava");
+  let basePath = paths.config;
 
   const extensionsPath = path.join(basePath, "extensions");
   const clientPath = path.join(extensionsPath, "client");
@@ -172,14 +167,9 @@ async function getExtensions(debug = false) {
   return result;
 }
 
-async function getBookmarks(debug = false) {
-  let basePath;
-  if (debug) {
-    basePath = path.join(os.homedir(), "Projects", "lava");
-  } else {
-    const paths = envPaths("lava");
-    basePath = paths.config;
-  }
+async function getBookmarks() {
+  const paths = envPaths("lava");
+  let basePath = paths.config;
 
   let dataPath = path.join(basePath, "data");
 
@@ -196,13 +186,8 @@ async function getBookmarks(debug = false) {
 }
 
 async function addBookmark(title, url, debug = false) {
-  let basePath;
-  if (debug) {
-    basePath = path.join(os.homedir(), "Projects", "lava");
-  } else {
-    const paths = envPaths("lava");
-    basePath = paths.config;
-  }
+  const paths = envPaths("lava");
+  let basePath = paths.config;
 
   let dataPath = path.join(basePath, "data");
 
@@ -225,13 +210,8 @@ async function addBookmark(title, url, debug = false) {
 }
 
 async function getSettings(debug = false) {
-  let basePath;
-  if (debug) {
-    basePath = path.join(os.homedir(), "Projects", "lava");
-  } else {
-    const paths = envPaths("lava");
-    basePath = paths.config;
-  }
+  const paths = envPaths("lava");
+  let basePath = paths.config;
 
   let dataPath = path.join(basePath, "data");
 
@@ -248,13 +228,8 @@ async function getSettings(debug = false) {
 }
 
 async function setSetting(setting, value, debug = false) {
-  let basePath;
-  if (debug) {
-    basePath = path.join(os.homedir(), "Projects", "lava");
-  } else {
-    const paths = envPaths("lava");
-    basePath = paths.config;
-  }
+  const paths = envPaths("lava");
+  let basePath = paths.config;
 
   let dataPath = path.join(basePath, "data");
 
@@ -306,7 +281,7 @@ app.whenReady().then(() => {
 console.log("-----> Waiting for app to be ready...");
 
 app.on("window-all-closed", async function () {
-  const settings = await getSettings(true);
+  const settings = await getSettings();
   if (settings.clearDataOnExit) {
     try {
       await clearData();

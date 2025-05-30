@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/StrawberryMilkSoftware/lava#readme",
   "devDependencies": {
-    "electron": "^31.7.6"
+    "electron": "^31.7.7"
   }
 }
